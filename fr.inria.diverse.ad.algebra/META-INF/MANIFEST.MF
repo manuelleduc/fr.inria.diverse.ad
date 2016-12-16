@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Algebra
+Bundle-SymbolicName: fr.inria.diverse.ad.algebra
+Bundle-Version: 1.0.0.qualifier
+Export-Package: fr.inria.diverse.ad.algebra.data,
+ fr.inria.diverse.ad.algebra.impl,
+ fr.inria.diverse.ad.algebra.operation
+Require-Bundle: org.modelexecution.operationalsemantics.ad
