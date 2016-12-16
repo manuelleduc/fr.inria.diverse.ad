@@ -27,16 +27,20 @@ import activitydiagram.algebra.ActivitydiagramAlgebra;
 import fr.inria.diverse.ad.algebra.impl.operation.activity.ActivityActivityOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.activityedge.ControlFlowActivityEdgeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.activitynode.ActivityFinalNodeActivityNodeOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.activitynode.MergeNodeActivityNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.activitynode.DecisionNodeActivityNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.activitynode.ForkNodeActivityNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.activitynode.InitialNodeActivityNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.activitynode.JoinNodeActivityNodeOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.activitynode.MergeNodeActivityNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.activitynode.OpageActionActivityNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.contextprocessor.InputValueContextProcessorOperationImplementation;
 import fr.inria.diverse.ad.algebra.impl.operation.expressionoperation.BooleanBinaryExpressionExpressionOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.expressionoperation.BooleanUnaryExpressionExpressionOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.expressionoperation.IntegerCalculationExpressionExpressionOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.expressionoperation.IntegerComparisonExpressionExpressionOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.node.ControlTokenNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.node.ForkedTokenNodeOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.offer.OfferOfferOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.value.BooleanValueValueOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.value.IntegerValueValueOperationImplementation;
 import fr.inria.diverse.ad.algebra.impl.operation.variable.BooleanVariableVariableOperationImpl;
@@ -54,16 +58,15 @@ import fr.inria.diverse.ad.algebra.operation.VariableOperation;
 public interface ExecutableADAlgebra extends ActivitydiagramAlgebra<ActivityOperation, // A
 ActivityNodeOperation, // B
 ActivityEdgeOperation, // C
-Integer, // D
+Void, // D
 VariableOperation, // E
 ValueOperation, // F
 ExpressionOperation, // G
 OfferOperation, // H
 NodeOperation, // I
-Integer, // J
+Void, // J
 ContextProcessorOperation, // K
-Integer> {
-	
+Void> {
 
 	// L
 
@@ -114,8 +117,7 @@ Integer> {
 
 	@Override
 	default ExpressionOperation booleanUnaryExpression(final BooleanUnaryExpression booleanUnaryExpression) {
-		// TODO Auto-generated method stub
-		return null;
+		return new BooleanUnaryExpressionExpressionOperationImpl(this, booleanUnaryExpression);
 	}
 
 	@Override
@@ -144,9 +146,8 @@ Integer> {
 	}
 
 	@Override
-	default Integer input(final Input input) {
-		// TODO Auto-generated method stub
-		return null;
+	default Void input(final Input input) {
+		throw new RuntimeException("unused ?");
 	}
 
 	@Override
@@ -157,15 +158,13 @@ Integer> {
 	@Override
 	default ExpressionOperation integerCalculationExpression(
 			final IntegerCalculationExpression integerCalculationExpression) {
-		// TODO Auto-generated method stub
-		return null;
+		return new IntegerCalculationExpressionExpressionOperationImpl(this, integerCalculationExpression);
 	}
 
 	@Override
 	default ExpressionOperation integerComparisonExpression(
 			final IntegerComparisonExpression integerComparisonExpression) {
-		// TODO Auto-generated method stub
-		return null;
+		return new IntegerComparisonExpressionExpressionOperationImpl(this, integerComparisonExpression);
 	}
 
 	@Override
@@ -180,14 +179,12 @@ Integer> {
 
 	@Override
 	default OfferOperation offer(final Offer offer) {
-		// TODO Auto-generated method stub
-		return null;
+		return new OfferOfferOperationImpl(this, offer);
 	}
 
 	@Override
-	default Integer trace(final Trace trace) {
-		// TODO Auto-generated method stub
-		return null;
+	default Void trace(final Trace trace) {
+		throw new RuntimeException("unused ?");
 	}
 
 }
