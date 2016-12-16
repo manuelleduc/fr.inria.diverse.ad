@@ -16,7 +16,8 @@ public class InputValueContextProcessorOperationImplementation implements Contex
 
 	@Override
 	public ADContext process(ADContext context) {
-		return new ADContext(context, alg.$(inputValue.getVariable()).getVariable(),
-				alg.$(inputValue.getValue()).getValue());
+//		return new ADContext(context, alg.$(inputValue.getVariable()).getCurrentValue()(),
+//				alg.$(inputValue.getValue()).getValue());
+		throw new RuntimeException("TODO");
 	}
 }

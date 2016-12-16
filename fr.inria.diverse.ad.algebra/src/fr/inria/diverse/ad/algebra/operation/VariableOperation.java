@@ -1,7 +1,10 @@
 package fr.inria.diverse.ad.algebra.operation;
 
-import fr.inria.diverse.ad.algebra.data.VariableType;
+import activitydiagram.Value;
 
 public interface VariableOperation {
-	VariableType getVariable();
+
+	Value getCurrentValue();
+
+	void setCurrentValue(Value value);
 }

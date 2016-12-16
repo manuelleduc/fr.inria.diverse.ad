@@ -27,13 +27,14 @@ import activitydiagram.algebra.ActivitydiagramAlgebra;
 import fr.inria.diverse.ad.algebra.impl.operation.activity.ActivityActivityOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.activityedge.ControlFlowActivityEdgeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.activitynode.ActivityFinalNodeActivityNodeOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.activitynode.ActivityMergeNodeActivityNodeOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.activitynode.MergeNodeActivityNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.activitynode.DecisionNodeActivityNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.activitynode.ForkNodeActivityNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.activitynode.InitialNodeActivityNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.activitynode.JoinNodeActivityNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.activitynode.OpageActionActivityNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.contextprocessor.InputValueContextProcessorOperationImplementation;
+import fr.inria.diverse.ad.algebra.impl.operation.expressionoperation.BooleanBinaryExpressionExpressionOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.node.ControlTokenNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.node.ForkedTokenNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.value.BooleanValueValueOperationImpl;
@@ -44,7 +45,9 @@ import fr.inria.diverse.ad.algebra.operation.ActivityEdgeOperation;
 import fr.inria.diverse.ad.algebra.operation.ActivityNodeOperation;
 import fr.inria.diverse.ad.algebra.operation.ActivityOperation;
 import fr.inria.diverse.ad.algebra.operation.ContextProcessorOperation;
+import fr.inria.diverse.ad.algebra.operation.ExpressionOperation;
 import fr.inria.diverse.ad.algebra.operation.NodeOperation;
+import fr.inria.diverse.ad.algebra.operation.OfferOperation;
 import fr.inria.diverse.ad.algebra.operation.ValueOperation;
 import fr.inria.diverse.ad.algebra.operation.VariableOperation;
 
@@ -54,12 +57,15 @@ ActivityEdgeOperation, // C
 Integer, // D
 VariableOperation, // E
 ValueOperation, // F
-Integer, // G
-Integer, // H
+ExpressionOperation, // G
+OfferOperation, // H
 NodeOperation, // I
 Integer, // J
 ContextProcessorOperation, // K
-Integer> { // L
+Integer> {
+	
+
+	// L
 
 	@Override
 	default ActivityOperation activity(final Activity activity) {
@@ -93,7 +99,7 @@ Integer> { // L
 
 	@Override
 	default ActivityNodeOperation mergeNode(final MergeNode mergeNode) {
-		return new ActivityMergeNodeActivityNodeOperationImpl(this, mergeNode);
+		return new MergeNodeActivityNodeOperationImpl(this, mergeNode);
 	}
 
 	@Override
@@ -102,13 +108,12 @@ Integer> { // L
 	}
 
 	@Override
-	default Integer booleanBinaryExpression(final BooleanBinaryExpression booleanBinaryExpression) {
-		// TODO Auto-generated method stub
-		return null;
+	default ExpressionOperation booleanBinaryExpression(final BooleanBinaryExpression booleanBinaryExpression) {
+		return new BooleanBinaryExpressionExpressionOperationImpl(this, booleanBinaryExpression);
 	}
 
 	@Override
-	default Integer booleanUnaryExpression(final BooleanUnaryExpression booleanUnaryExpression) {
+	default ExpressionOperation booleanUnaryExpression(final BooleanUnaryExpression booleanUnaryExpression) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -120,12 +125,12 @@ Integer> { // L
 
 	@Override
 	default VariableOperation booleanVariable(final BooleanVariable booleanVariable) {
-		return new BooleanVariableVariableOperationImpl(booleanVariable);
+		return new BooleanVariableVariableOperationImpl();
 	}
 
 	@Override
 	default ActivityEdgeOperation controlFlow(final ControlFlow controlFlow) {
-		return new ControlFlowActivityEdgeOperationImpl(controlFlow);
+		return new ControlFlowActivityEdgeOperationImpl(this, controlFlow);
 	}
 
 	@Override
@@ -150,13 +155,15 @@ Integer> { // L
 	}
 
 	@Override
-	default Integer integerCalculationExpression(final IntegerCalculationExpression integerCalculationExpression) {
+	default ExpressionOperation integerCalculationExpression(
+			final IntegerCalculationExpression integerCalculationExpression) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	default Integer integerComparisonExpression(final IntegerComparisonExpression integerComparisonExpression) {
+	default ExpressionOperation integerComparisonExpression(
+			final IntegerComparisonExpression integerComparisonExpression) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -168,11 +175,11 @@ Integer> { // L
 
 	@Override
 	default VariableOperation integerVariable(final IntegerVariable integerVariable) {
-		return new IntegerVariableVariableOperationImplementation(integerVariable);
+		return new IntegerVariableVariableOperationImplementation();
 	}
 
 	@Override
-	default Integer offer(final Offer offer) {
+	default OfferOperation offer(final Offer offer) {
 		// TODO Auto-generated method stub
 		return null;
 	}

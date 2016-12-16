@@ -8,4 +8,8 @@ public interface ActivityEdgeOperation {
 
 	List<Token> takeOfferedTokens();
 
+	boolean hasOffer();
+
+	void sendOffer(List<Token> tokens);
+
 }

@@ -17,6 +17,12 @@ public interface ActivityNodeOperation {
 
 	void removeToken(Token token);
 
-	void sendOffers(List<Token> forkedTokens);
+	void sendOffers(List<Token> tokens);
+
+	boolean hasOffers();
+
+	boolean isRunning();
+
+	boolean isReady();
 
 }

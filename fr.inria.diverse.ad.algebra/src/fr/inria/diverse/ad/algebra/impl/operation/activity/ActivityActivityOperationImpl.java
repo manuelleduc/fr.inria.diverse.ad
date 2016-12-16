@@ -42,7 +42,8 @@ public class ActivityActivityOperationImpl implements ActivityOperation {
 		this.run();
 	}
 
-	private void run() {
+	@Override
+	public void run() {
 		this.runNodes();
 
 		this.fireInitialNode();
@@ -56,7 +57,8 @@ public class ActivityActivityOperationImpl implements ActivityOperation {
 
 	}
 
-	private ActivityNode selectNextNode(final List<ActivityNode> activityNodes) {
+	@Override
+	public ActivityNode selectNextNode(final List<ActivityNode> activityNodes) {
 		return activityNodes.get(0);
 	}
 

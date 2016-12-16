@@ -1,18 +1,24 @@
 package fr.inria.diverse.ad.algebra.impl.operation.variable;
 
-import activitydiagram.BooleanVariable;
-import fr.inria.diverse.ad.algebra.data.VariableType;
+import activitydiagram.ActivitydiagramFactory;
+import activitydiagram.BooleanValue;
+import activitydiagram.Value;
 import fr.inria.diverse.ad.algebra.operation.VariableOperation;
 
 public class BooleanVariableVariableOperationImpl implements VariableOperation {
-	private final BooleanVariable booleanVariable;
 
-	public BooleanVariableVariableOperationImpl(BooleanVariable booleanVariable) {
-		this.booleanVariable = booleanVariable;
+	private BooleanValue currentValue = ActivitydiagramFactory.eINSTANCE.createBooleanValue();
+
+	@Override
+	public Value getCurrentValue() {
+		return currentValue;
 	}
 
 	@Override
-	public VariableType getVariable() {
-		return new VariableType(booleanVariable.getName(), VariableType.Type.BOOLEAN);
+	public void setCurrentValue(Value value) {
+		if(value instanceof BooleanValue) {
+			BooleanValue booleanValue = (BooleanValue) value;
+			currentValue.setValue(booleanValue.isValue());
+		}
 	}
 }

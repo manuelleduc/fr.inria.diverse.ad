@@ -10,34 +10,13 @@ import activitydiagram.DecisionNode;
 import activitydiagram.Token;
 import activitydiagram.Value;
 import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
-import fr.inria.diverse.ad.algebra.operation.ActivityNodeOperation;
 
-public class DecisionNodeActivityNodeOperationImpl implements ActivityNodeOperation {
+public class DecisionNodeActivityNodeOperationImpl extends ControlNodeActivityNodeImpl {
 	private final DecisionNode decisionNode;
-	private final ExecutableADAlgebra alg;
 
 	public DecisionNodeActivityNodeOperationImpl(final ExecutableADAlgebra alg, final DecisionNode decisionNode) {
+		super(alg, decisionNode);
 		this.decisionNode = decisionNode;
-		this.alg = alg;
-	}
-
-	@Override
-	public List<Token> takeOfferdTokens() {
-		final List<Token> allTokens = new ArrayList<Token>();
-		for (final ActivityEdge edge : this.decisionNode.getIncoming()) {
-			final List<Token> tokens = this.alg.$(edge).takeOfferedTokens();
-			for (final Token token : tokens) {
-				this.alg.$(token).withdraw();
-			}
-			allTokens.addAll(tokens);
-		}
-		return allTokens;
-	}
-
-	@Override
-	public void run() {
-		this.decisionNode.setRunning(true);
-
 	}
 
 	@Override
@@ -65,30 +44,13 @@ public class DecisionNodeActivityNodeOperationImpl implements ActivityNodeOperat
 	}
 
 	@Override
-	public void addTokens(final List<Token> tokens) {
-		for (final Token token : tokens) {
-			final Token transferredToken = this.alg.$(token).transfer(this.decisionNode);
-			this.decisionNode.getHeldTokens().add(transferredToken);
+	public boolean isReady() {
+		boolean ready = true;
+		for (ActivityEdge edge : this.decisionNode.getIncoming()) {
+			if (!this.alg.$(edge).hasOffer())
+				ready = false;
 		}
-
+		return ready;
 	}
 
-	@Override
-	public void terminate() {
-		this.decisionNode.setRunning(false);
-
-	}
-
-	@Override
-	public void removeToken(final Token token) {
-		this.decisionNode.getHeldTokens().remove(token);
-
-	}
-
-	@Override
-	public void sendOffers(final List<Token> tokens) {
-		for (final ActivityEdge edge : this.decisionNode.getOutgoing()) {
-			edge.sendOffer(tokens);
-		}
-	}
 }

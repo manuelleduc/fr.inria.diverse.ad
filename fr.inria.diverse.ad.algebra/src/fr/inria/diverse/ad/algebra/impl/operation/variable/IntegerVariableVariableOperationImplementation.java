@@ -1,18 +1,23 @@
 package fr.inria.diverse.ad.algebra.impl.operation.variable;
 
-import activitydiagram.IntegerVariable;
-import fr.inria.diverse.ad.algebra.data.VariableType;
+import activitydiagram.ActivitydiagramFactory;
+import activitydiagram.IntegerValue;
+import activitydiagram.Value;
 import fr.inria.diverse.ad.algebra.operation.VariableOperation;
 
 public class IntegerVariableVariableOperationImplementation implements VariableOperation {
-	private final IntegerVariable integerVariable;
+	IntegerValue currentValue = ActivitydiagramFactory.eINSTANCE.createIntegerValue();
 
-	public IntegerVariableVariableOperationImplementation(IntegerVariable integerVariable) {
-		this.integerVariable = integerVariable;
+	@Override
+	public Value getCurrentValue() {
+		return currentValue;
 	}
 
 	@Override
-	public VariableType getVariable() {
-		return new VariableType(integerVariable.getName(), VariableType.Type.INTEGER);
+	public void setCurrentValue(Value value) {
+		if (value instanceof IntegerValue) {
+			IntegerValue integerValue = (IntegerValue) value;
+			currentValue.setValue(integerValue.getValue());
+		}
 	}
 }
