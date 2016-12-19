@@ -58,7 +58,7 @@ public class TestSuite {
 
 	@After
 	final public void printTrace() {
-		 writeToFile(trace);
+		writeToFile(trace);
 		reset();
 	}
 
@@ -86,7 +86,7 @@ public class TestSuite {
 	}
 
 	@Test
-//	@Ignore
+	// @Ignore
 	final public void test2() {
 		trace = executeActivity("model/test2.ad");
 		assertTrue(
@@ -96,7 +96,7 @@ public class TestSuite {
 	}
 
 	@Test
-//	@Ignore
+	// @Ignore
 	final public void test3() {
 		trace = executeActivity("model/test3.ad");
 		assertTrue(checkTotalExecutionOrder(trace, "initialNode3", "decisionNode1", "action4", "mergeNode1",
@@ -127,7 +127,7 @@ public class TestSuite {
 	}
 
 	@Test
-//	@Ignore
+	// @Ignore
 	final public void test6_false() {
 		trace = executeActivity("model/test6.ad", "model/test6_false.adinput");
 		assertTrue(checkTotalExecutionOrder(trace, "initialNode6", "register", "decisionInternal",
@@ -142,7 +142,7 @@ public class TestSuite {
 	}
 
 	@Test
-//	@Ignore
+	// @Ignore
 	final public void test6_true() {
 		trace = executeActivity("model/test6.ad", "model/test6_true.adinput");
 		assertTrue(checkPartialExecutionOrder(trace, "initialNode6", "register", "decisionInternal",
@@ -180,7 +180,7 @@ public class TestSuite {
 	}
 
 	@Test
-//	@Ignore
+	// @Ignore
 	public void test_performance_variant3_2() {
 		trace = executeActivity("model/testperformance_variant3_2.ad", "model/testperformance_variant3_2.adinput");
 		assertEquals(141, getIntegerVariableValue(trace, "loop"));
@@ -194,19 +194,10 @@ public class TestSuite {
 	protected Trace executeActivity(final String modelPath, final String inputPath) {
 		final Activity activity = getActivity(modelPath);
 		final List<InputValue> inputValues = getInputValues(inputPath);
-		// activity.main(inputValues);
 
 		final ExecutableADAlgebra executableADAlgebra = new ExecutableADAlgebra() {
 		};
 
-		// TODO : should be a fold
-		// ADContext adc = new ADContext();
-		// for (InputValue inputValue : inputValues) {
-		// adc = executableADAlgebra.$(inputValue).process(adc);
-		// }
-
-		// System.out.println(">>>>>>>> " + adc);
-		// final Integer inputValues = executableADAlgebra.$(inputValues);
 		executableADAlgebra.$(activity).main(inputValues);
 
 		return activity.getTrace();

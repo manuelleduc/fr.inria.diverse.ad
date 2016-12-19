@@ -85,6 +85,7 @@ public class ActivityActivityOperationImpl implements ActivityOperation {
 		ActivityNodeOperation $ = this.alg.$(node);
 		final List<Token> tokens = $.takeOfferdTokens();
 		$.fire(tokens);
+//		this.alg.$(this.activity.getTrace()).addTrace(node);
 		this.activity.getTrace().getExecutedNodes().add(node);
 	}
 

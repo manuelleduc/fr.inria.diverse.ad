@@ -1,7 +1,11 @@
 package fr.inria.diverse.ad.algebra.impl;
 
+import java.util.List;
+
 import activitydiagram.Activity;
 import activitydiagram.ActivityFinalNode;
+import activitydiagram.ActivityNode;
+import activitydiagram.ActivitydiagramFactory;
 import activitydiagram.BooleanBinaryExpression;
 import activitydiagram.BooleanUnaryExpression;
 import activitydiagram.BooleanValue;
@@ -24,6 +28,7 @@ import activitydiagram.Offer;
 import activitydiagram.OpaqueAction;
 import activitydiagram.Trace;
 import activitydiagram.algebra.ActivitydiagramAlgebra;
+import activitydiagram.impl.TraceImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.executable.activity.ActivityActivityOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.executable.activityedge.ControlFlowActivityEdgeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.executable.activitynode.ActivityFinalNodeActivityNodeOperationImpl;
@@ -52,6 +57,7 @@ import fr.inria.diverse.ad.algebra.operation.ContextProcessorOperation;
 import fr.inria.diverse.ad.algebra.operation.ExpressionOperation;
 import fr.inria.diverse.ad.algebra.operation.NodeOperation;
 import fr.inria.diverse.ad.algebra.operation.OfferOperation;
+import fr.inria.diverse.ad.algebra.operation.TraceOperation;
 import fr.inria.diverse.ad.algebra.operation.ValueOperation;
 import fr.inria.diverse.ad.algebra.operation.VariableOperation;
 

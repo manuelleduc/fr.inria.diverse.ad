@@ -34,7 +34,7 @@ public interface Trace extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Executed Nodes</em>' reference list.
 	 * @see activitydiagram.ActivitydiagramPackage#getTrace_ExecutedNodes()
-	 * @model
+	 * @model resolveProxies="false"
 	 * @generated
 	 */
 	EList<ActivityNode> getExecutedNodes();

@@ -8,13 +8,14 @@ import activitydiagram.Trace;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -62,11 +63,11 @@ public class TraceImpl extends MinimalEObjectImpl.Container implements Trace {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<ActivityNode> getExecutedNodes() {
 		if (executedNodes == null) {
-			executedNodes = new EObjectResolvingEList<ActivityNode>(ActivityNode.class, this, ActivitydiagramPackage.TRACE__EXECUTED_NODES);
+			executedNodes = new BasicEList<ActivityNode>();
 		}
 		return executedNodes;
 	}
