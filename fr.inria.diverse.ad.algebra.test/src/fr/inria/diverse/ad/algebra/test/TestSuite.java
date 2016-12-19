@@ -20,6 +20,7 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.modelexecution.operationalsemantics.ActivityDiagramInputStandaloneSetup;
 import org.modelexecution.operationalsemantics.ActivityDiagramStandaloneSetup;
@@ -35,7 +36,6 @@ import activitydiagram.IntegerVariable;
 import activitydiagram.Trace;
 import activitydiagram.Value;
 import activitydiagram.Variable;
-import fr.inria.diverse.ad.algebra.data.ADContext;
 import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
 
 public class TestSuite {
@@ -58,7 +58,7 @@ public class TestSuite {
 
 	@After
 	final public void printTrace() {
-		// writeToFile(trace);
+		 writeToFile(trace);
 		reset();
 	}
 
@@ -86,6 +86,7 @@ public class TestSuite {
 	}
 
 	@Test
+//	@Ignore
 	final public void test2() {
 		trace = executeActivity("model/test2.ad");
 		assertTrue(
@@ -95,6 +96,7 @@ public class TestSuite {
 	}
 
 	@Test
+//	@Ignore
 	final public void test3() {
 		trace = executeActivity("model/test3.ad");
 		assertTrue(checkTotalExecutionOrder(trace, "initialNode3", "decisionNode1", "action4", "mergeNode1",
@@ -125,6 +127,7 @@ public class TestSuite {
 	}
 
 	@Test
+//	@Ignore
 	final public void test6_false() {
 		trace = executeActivity("model/test6.ad", "model/test6_false.adinput");
 		assertTrue(checkTotalExecutionOrder(trace, "initialNode6", "register", "decisionInternal",
@@ -139,6 +142,7 @@ public class TestSuite {
 	}
 
 	@Test
+//	@Ignore
 	final public void test6_true() {
 		trace = executeActivity("model/test6.ad", "model/test6_true.adinput");
 		assertTrue(checkPartialExecutionOrder(trace, "initialNode6", "register", "decisionInternal",
@@ -176,6 +180,7 @@ public class TestSuite {
 	}
 
 	@Test
+//	@Ignore
 	public void test_performance_variant3_2() {
 		trace = executeActivity("model/testperformance_variant3_2.ad", "model/testperformance_variant3_2.adinput");
 		assertEquals(141, getIntegerVariableValue(trace, "loop"));
@@ -202,7 +207,7 @@ public class TestSuite {
 
 		// System.out.println(">>>>>>>> " + adc);
 		// final Integer inputValues = executableADAlgebra.$(inputValues);
-		executableADAlgebra.$(activity).execute(inputValues);
+		executableADAlgebra.$(activity).main(inputValues);
 
 		return activity.getTrace();
 	}
