@@ -3,12 +3,22 @@ a
 b
 c
 d
+mergeE
+e
+decisionI
+i
+j
+decisionLoop
+l
+k
+mergeFinal7
+finalNode7
 value2 = 2
 iG2 = false
 iE2 = false
 iL2 = true
-loop = 0
+loop = 141
 iterations = 141
-loopEiterations = false
+loopEiterations = true
 loopLiterations = false
 value1 = 1

@@ -15,13 +15,12 @@ public class MergeNodeActivityNodeOperationImpl extends ControlNodeActivityNodeI
 	
 	@Override
 	public boolean hasOffers() {
-		boolean hasOffer = true;
 		for(ActivityEdge edge : this.mergeNode. getIncoming()) {
-			if(!this.alg.$(edge).hasOffer()) {
-				hasOffer = false;
+			if(this.alg.$(edge).hasOffer()) {
+				return true;
 			}	
 		}
-		return hasOffer;
+		return false;
 	}
 
 }
