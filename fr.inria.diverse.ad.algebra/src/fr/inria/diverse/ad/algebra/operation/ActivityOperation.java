@@ -6,7 +6,7 @@ import activitydiagram.ActivityNode;
 import activitydiagram.InputValue;
 
 public interface ActivityOperation {
-	void execute(List<InputValue> inputValues);
+	void main(List<InputValue> inputValues);
 
 	void terminate();
 

@@ -4,7 +4,7 @@ import activitydiagram.Value;
 
 public interface VariableOperation {
 
-	Value getCurrentValue();
-
-	void setCurrentValue(Value value);
+//	Value getCurrentValue();
+//
+//	void setCurrentValue(Value value);
 }

@@ -24,27 +24,27 @@ import activitydiagram.Offer;
 import activitydiagram.OpaqueAction;
 import activitydiagram.Trace;
 import activitydiagram.algebra.ActivitydiagramAlgebra;
-import fr.inria.diverse.ad.algebra.impl.operation.activity.ActivityActivityOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.activityedge.ControlFlowActivityEdgeOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.activitynode.ActivityFinalNodeActivityNodeOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.activitynode.DecisionNodeActivityNodeOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.activitynode.ForkNodeActivityNodeOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.activitynode.InitialNodeActivityNodeOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.activitynode.JoinNodeActivityNodeOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.activitynode.MergeNodeActivityNodeOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.activitynode.OpageActionActivityNodeOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.contextprocessor.InputValueContextProcessorOperationImplementation;
-import fr.inria.diverse.ad.algebra.impl.operation.expressionoperation.BooleanBinaryExpressionExpressionOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.expressionoperation.BooleanUnaryExpressionExpressionOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.expressionoperation.IntegerCalculationExpressionExpressionOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.expressionoperation.IntegerComparisonExpressionExpressionOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.node.ControlTokenNodeOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.node.ForkedTokenNodeOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.offer.OfferOfferOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.value.BooleanValueValueOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.value.IntegerValueValueOperationImplementation;
-import fr.inria.diverse.ad.algebra.impl.operation.variable.BooleanVariableVariableOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.variable.IntegerVariableVariableOperationImplementation;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.activity.ActivityActivityOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.activityedge.ControlFlowActivityEdgeOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.activitynode.ActivityFinalNodeActivityNodeOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.activitynode.DecisionNodeActivityNodeOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.activitynode.ForkNodeActivityNodeOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.activitynode.InitialNodeActivityNodeOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.activitynode.JoinNodeActivityNodeOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.activitynode.MergeNodeActivityNodeOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.activitynode.OpageActionActivityNodeOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.contextprocessor.InputValueContextProcessorOperationImplementation;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.expressionoperation.BooleanBinaryExpressionExpressionOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.expressionoperation.BooleanUnaryExpressionExpressionOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.expressionoperation.IntegerCalculationExpressionExpressionOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.expressionoperation.IntegerComparisonExpressionExpressionOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.node.ControlTokenNodeOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.node.ForkedTokenNodeOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.offer.OfferOfferOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.value.BooleanValueValueOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.value.IntegerValueValueOperationImplementation;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.variable.BooleanVariableVariableOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.variable.IntegerVariableVariableOperationImplementation;
 import fr.inria.diverse.ad.algebra.operation.ActivityEdgeOperation;
 import fr.inria.diverse.ad.algebra.operation.ActivityNodeOperation;
 import fr.inria.diverse.ad.algebra.operation.ActivityOperation;
@@ -55,20 +55,8 @@ import fr.inria.diverse.ad.algebra.operation.OfferOperation;
 import fr.inria.diverse.ad.algebra.operation.ValueOperation;
 import fr.inria.diverse.ad.algebra.operation.VariableOperation;
 
-public interface ExecutableADAlgebra extends ActivitydiagramAlgebra<ActivityOperation, // A
-ActivityNodeOperation, // B
-ActivityEdgeOperation, // C
-Void, // D
-VariableOperation, // E
-ValueOperation, // F
-ExpressionOperation, // G
-OfferOperation, // H
-NodeOperation, // I
-Void, // J
-ContextProcessorOperation, // K
-Void> {
-
-	// L
+public interface ExecutableADAlgebra extends
+		ActivitydiagramAlgebra<ActivityOperation, ActivityNodeOperation, ActivityEdgeOperation, Void, VariableOperation, ValueOperation, ExpressionOperation, OfferOperation, NodeOperation, Void, ContextProcessorOperation, Void> {
 
 	@Override
 	default ActivityOperation activity(final Activity activity) {
@@ -127,7 +115,7 @@ Void> {
 
 	@Override
 	default VariableOperation booleanVariable(final BooleanVariable booleanVariable) {
-		return new BooleanVariableVariableOperationImpl();
+		return new BooleanVariableVariableOperationImpl(booleanVariable);
 	}
 
 	@Override
