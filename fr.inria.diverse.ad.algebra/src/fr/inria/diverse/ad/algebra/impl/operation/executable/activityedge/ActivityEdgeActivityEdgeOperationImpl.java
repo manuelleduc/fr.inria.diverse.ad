@@ -12,39 +12,39 @@ import fr.inria.diverse.ad.algebra.operation.ActivityEdgeOperation;
 
 public abstract class ActivityEdgeActivityEdgeOperationImpl implements ActivityEdgeOperation {
 
-	private ActivityEdge activityEdge;
-	private ExecutableADAlgebra alg;
+	private final ActivityEdge activityEdge;
+	private final ExecutableADAlgebra alg;
 
-	public ActivityEdgeActivityEdgeOperationImpl(ExecutableADAlgebra alg,  ActivityEdge activityEdge) {
+	public ActivityEdgeActivityEdgeOperationImpl(final ExecutableADAlgebra alg,  final ActivityEdge activityEdge) {
 		this.activityEdge = activityEdge;
 		this.alg = alg;
 	}
 
 	@Override
-	public void sendOffer(List<Token> tokens) {
-		Offer offer = ActivitydiagramFactory.eINSTANCE.createOffer();
-		for(Token token : tokens) {
+	public void sendOffer(final List<Token> tokens) {
+		final Offer offer = ActivitydiagramFactory.eINSTANCE.createOffer();
+		for(final Token token : tokens) {
 			offer.getOfferedTokens().add(token);
 		}
-		activityEdge.getOffers().add(offer);
+		this.activityEdge.getOffers().add(offer);
 	}
 	
 	@Override
 	public List<Token> takeOfferedTokens() {
-		List<Token> tokens = new ArrayList<Token>();
+		final List<Token> tokens = new ArrayList<Token>();
 		
-		for(Offer o : activityEdge.getOffers()) {
+		for(final Offer o : this.activityEdge.getOffers()) {
 			tokens.addAll(o.getOfferedTokens());
 		}
-		activityEdge.getOffers().clear();
+		this.activityEdge.getOffers().clear();
 		
 		return tokens;
 	}
 	
 	@Override
 	public boolean hasOffer() {
-		for(Offer o : activityEdge.getOffers()) {
-			if (alg.$(o).hasTokens()) {
+		for(final Offer o : this.activityEdge.getOffers()) {
+			if (this.alg.$(o).hasTokens()) {
 				return true;
 			}
 		}

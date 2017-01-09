@@ -12,7 +12,6 @@ import activitydiagram.Token;
 import activitydiagram.Trace;
 import activitydiagram.Variable;
 import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
-import fr.inria.diverse.ad.algebra.operation.ActivityNodeOperation;
 import fr.inria.diverse.ad.algebra.operation.ActivityOperation;
 
 public class ActivityActivityOperationImpl implements ActivityOperation {
@@ -43,8 +42,7 @@ public class ActivityActivityOperationImpl implements ActivityOperation {
 		this.run();
 	}
 
-	@Override
-	public void run() {
+	private void run() {
 		this.runNodes();
 
 		this.fireInitialNode();
@@ -58,16 +56,14 @@ public class ActivityActivityOperationImpl implements ActivityOperation {
 
 	}
 
-	@Override
-	public ActivityNode selectNextNode(final List<ActivityNode> activityNodes) {
+	private ActivityNode selectNextNode(final List<ActivityNode> activityNodes) {
 		return activityNodes.get(0);
 	}
 
 	private List<ActivityNode> getEnabledNodes() {
 		final List<ActivityNode> enabledNodes = new ArrayList<ActivityNode>();
 		for (final ActivityNode node : this.activity.getNodes()) {
-			ActivityNodeOperation $ = alg.$(node);
-			if ($.isReady()) {
+			if (this.alg.$(node).isReady()) {
 				enabledNodes.add(node);
 			}
 		}
@@ -81,11 +77,9 @@ public class ActivityActivityOperationImpl implements ActivityOperation {
 	}
 
 	private void fireNode(final ActivityNode node) {
-		System.out.println("fire node " + node.getName());
-		ActivityNodeOperation $ = this.alg.$(node);
-		final List<Token> tokens = $.takeOfferdTokens();
-		$.fire(tokens);
-//		this.alg.$(this.activity.getTrace()).addTrace(node);
+		// System.out.println("fire node " + node.getName());
+		final List<Token> tokens = this.alg.$(node).takeOfferdTokens();
+		this.alg.$(node).fire(tokens);
 		this.activity.getTrace().getExecutedNodes().add(node);
 	}
 
@@ -100,8 +94,7 @@ public class ActivityActivityOperationImpl implements ActivityOperation {
 
 	private void runNodes() {
 		for (final ActivityNode node : this.activity.getNodes()) {
-			ActivityNodeOperation $ = this.alg.$(node);
-			$.run();
+			this.alg.$(node).run();
 		}
 
 	}

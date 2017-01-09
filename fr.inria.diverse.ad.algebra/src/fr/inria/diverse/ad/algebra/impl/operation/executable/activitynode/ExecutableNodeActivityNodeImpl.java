@@ -5,7 +5,7 @@ import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
 
 public abstract class ExecutableNodeActivityNodeImpl extends ActivityNodeActivityNodeOperationImpl {
 
-	public ExecutableNodeActivityNodeImpl(ExecutableADAlgebra alg, ExecutableNode joinNode) {
+	public ExecutableNodeActivityNodeImpl(final ExecutableADAlgebra alg, final ExecutableNode joinNode) {
 		super(alg, joinNode);
 	}
 

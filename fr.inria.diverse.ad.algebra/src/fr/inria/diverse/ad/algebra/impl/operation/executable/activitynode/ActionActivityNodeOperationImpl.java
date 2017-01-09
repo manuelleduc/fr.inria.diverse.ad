@@ -10,33 +10,33 @@ import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
 
 public abstract class ActionActivityNodeOperationImpl extends ExecutableNodeActivityNodeImpl {
 
-	private Action action;
+	private final Action action;
 
-	public ActionActivityNodeOperationImpl(ExecutableADAlgebra alg, Action action) {
+	public ActionActivityNodeOperationImpl(final ExecutableADAlgebra alg, final Action action) {
 		super(alg, action);
 		this.action = action;
 	}
 	
 	@Override
-	public void fire(List<Token> tokens) {
-		doAction();
-		sendOffers();
+	public void fire(final List<Token> tokens) {
+		this.doAction();
+		this.sendOffers();
 	}
 		
 	abstract void doAction();
 
 	public void sendOffers() {
-		if(action.getOutgoing().size() > 0) {
-			List<Token> tokens = new ArrayList<Token>();
+		if(this.action.getOutgoing().size() > 0) {
+			final List<Token> tokens = new ArrayList<Token>();
 			tokens.add(ActivitydiagramFactory.eINSTANCE.createControlToken());
-			addTokens(tokens);
-			alg.$(action.getOutgoing().get(0)).sendOffer(tokens);
+			this.addTokens(tokens);
+			this.alg.$(this.action.getOutgoing().get(0)).sendOffer(tokens);
 		}
 	}
 	
 	@Override
 	public boolean isReady() {
-		return super.isReady() && hasOffers();
+		return super.isReady() && this.hasOffers();
 	}
 
 }

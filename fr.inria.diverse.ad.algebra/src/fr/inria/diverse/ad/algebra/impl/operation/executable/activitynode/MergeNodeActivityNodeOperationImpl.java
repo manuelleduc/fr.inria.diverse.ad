@@ -6,16 +6,16 @@ import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
 
 public class MergeNodeActivityNodeOperationImpl extends ControlNodeActivityNodeImpl {
 
-	private MergeNode mergeNode;
+	private final MergeNode mergeNode;
 
-	public MergeNodeActivityNodeOperationImpl(ExecutableADAlgebra alg, MergeNode mergeNode) {
+	public MergeNodeActivityNodeOperationImpl(final ExecutableADAlgebra alg, final MergeNode mergeNode) {
 		super(alg, mergeNode);
 		this.mergeNode = mergeNode;
 	}
 	
 	@Override
 	public boolean hasOffers() {
-		for(ActivityEdge edge : this.mergeNode. getIncoming()) {
+		for(final ActivityEdge edge : this.mergeNode. getIncoming()) {
 			if(this.alg.$(edge).hasOffer()) {
 				return true;
 			}	

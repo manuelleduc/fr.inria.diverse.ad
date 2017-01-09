@@ -6,21 +6,20 @@ import activitydiagram.IntegerComparisonExpression;
 import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
 
 public class IntegerComparisonExpressionExpressionOperationImpl extends IntegerExpressionExpressionOperationImpl {
-	private IntegerComparisonExpression integerComparisonExpression;
+	private final IntegerComparisonExpression integerComparisonExpression;
 
-	public IntegerComparisonExpressionExpressionOperationImpl(ExecutableADAlgebra alg,
-			IntegerComparisonExpression integerComparisonExpression) {
-		super(alg);
+	public IntegerComparisonExpressionExpressionOperationImpl(final ExecutableADAlgebra alg,
+			final IntegerComparisonExpression integerComparisonExpression) {
 		this.integerComparisonExpression = integerComparisonExpression;
 	}
 
 	@Override
 	public void execute() {
-		int operandValue1 = getCurrentValue(integerComparisonExpression.getOperand1());
-		int operandValue2 = getCurrentValue(integerComparisonExpression.getOperand2());
+		final int operandValue1 = this.getCurrentValue(this.integerComparisonExpression.getOperand1());
+		final int operandValue2 = this.getCurrentValue(this.integerComparisonExpression.getOperand2());
 
 		Boolean result = null;
-		switch (integerComparisonExpression.getOperator()) {
+		switch (this.integerComparisonExpression.getOperator()) {
 		case EQUALS:
 			result = operandValue1 == operandValue2;
 			break;
@@ -37,8 +36,8 @@ public class IntegerComparisonExpressionExpressionOperationImpl extends IntegerE
 			result = operandValue1 <= operandValue2;
 			break;
 		}
-		BooleanValue resultValue = ActivitydiagramFactory.eINSTANCE.createBooleanValue();
+		final BooleanValue resultValue = ActivitydiagramFactory.eINSTANCE.createBooleanValue();
 		resultValue.setValue(result);
-		integerComparisonExpression.getAssignee().setCurrentValue(resultValue);
+		this.integerComparisonExpression.getAssignee().setCurrentValue(resultValue);
 	}
 }

@@ -6,21 +6,20 @@ import activitydiagram.IntegerValue;
 import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
 
 public class IntegerCalculationExpressionExpressionOperationImpl extends IntegerExpressionExpressionOperationImpl {
-	private IntegerCalculationExpression integerCalculationExpression;
+	private final IntegerCalculationExpression integerCalculationExpression;
 
-	public IntegerCalculationExpressionExpressionOperationImpl(ExecutableADAlgebra alg,
-			IntegerCalculationExpression integerCalculationExpression) {
-		super(alg);
+	public IntegerCalculationExpressionExpressionOperationImpl(final ExecutableADAlgebra alg,
+			final IntegerCalculationExpression integerCalculationExpression) {
 		this.integerCalculationExpression = integerCalculationExpression;
 	}
 
 	@Override
 	public void execute() {
-		int operandValue1 = getCurrentValue(integerCalculationExpression.getOperand1());
-		int operandValue2 = getCurrentValue(integerCalculationExpression.getOperand2());
+		final Integer operandValue1 = this.getCurrentValue(this.integerCalculationExpression.getOperand1());
+		final Integer operandValue2 = this.getCurrentValue(this.integerCalculationExpression.getOperand2());
 
 		Integer result = null;
-		switch (integerCalculationExpression.getOperator()) {
+		switch (this.integerCalculationExpression.getOperator()) {
 		case ADD:
 			result = operandValue1 + operandValue2;
 			break;
@@ -28,9 +27,9 @@ public class IntegerCalculationExpressionExpressionOperationImpl extends Integer
 			result = operandValue1 - operandValue2;
 			break;
 		}
-		IntegerValue resultValue = ActivitydiagramFactory.eINSTANCE.createIntegerValue();
+		final IntegerValue resultValue = ActivitydiagramFactory.eINSTANCE.createIntegerValue();
 		resultValue.setValue(result);
-		integerCalculationExpression.getAssignee().setCurrentValue(resultValue);
+		this.integerCalculationExpression.getAssignee().setCurrentValue(resultValue);
 
 	}
 }

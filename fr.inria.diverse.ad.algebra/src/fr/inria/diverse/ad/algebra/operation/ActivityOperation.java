@@ -2,7 +2,6 @@ package fr.inria.diverse.ad.algebra.operation;
 
 import java.util.List;
 
-import activitydiagram.ActivityNode;
 import activitydiagram.InputValue;
 
 public interface ActivityOperation {
@@ -10,7 +9,4 @@ public interface ActivityOperation {
 
 	void terminate();
 
-	void run();
-
-	ActivityNode selectNextNode(List<ActivityNode> activityNodes);
 }

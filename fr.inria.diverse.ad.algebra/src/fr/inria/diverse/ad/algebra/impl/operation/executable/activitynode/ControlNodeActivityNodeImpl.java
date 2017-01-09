@@ -8,20 +8,19 @@ import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
 
 public abstract class ControlNodeActivityNodeImpl extends ActivityNodeActivityNodeOperationImpl {
 
-	public ControlNodeActivityNodeImpl(ExecutableADAlgebra alg, ControlNode joinNode) {
+	public ControlNodeActivityNodeImpl(final ExecutableADAlgebra alg, final ControlNode joinNode) {
 		super(alg, joinNode);
 	}
 
 	@Override
-	public void fire(List<Token> tokens) {
-		addTokens(tokens);
-		sendOffers(tokens);
+	public void fire(final List<Token> tokens) {
+		this.addTokens(tokens);
+		this.sendOffers(tokens);
 		
 	}
 
 	@Override
 	public boolean isReady() {
-		// TODO Auto-generated method stub
 		return super.isReady() && this.hasOffers();
 	}
 	

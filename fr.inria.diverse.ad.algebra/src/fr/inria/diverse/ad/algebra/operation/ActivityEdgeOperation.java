@@ -12,4 +12,5 @@ public interface ActivityEdgeOperation {
 
 	void sendOffer(List<Token> tokens);
 
+
 }

@@ -4,25 +4,25 @@ import activitydiagram.BooleanUnaryExpression;
 import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
 
 public class BooleanUnaryExpressionExpressionOperationImpl extends BooleanExpressionExpressionOperationImpl {
-	private BooleanUnaryExpression booleanUnaryExpression;
+	private final BooleanUnaryExpression booleanUnaryExpression;
 
-	public BooleanUnaryExpressionExpressionOperationImpl(ExecutableADAlgebra alg,
-			BooleanUnaryExpression booleanUnaryExpression) {
+	public BooleanUnaryExpressionExpressionOperationImpl(final ExecutableADAlgebra alg,
+			final BooleanUnaryExpression booleanUnaryExpression) {
 		super(alg, booleanUnaryExpression);
 		this.booleanUnaryExpression = booleanUnaryExpression;
 	}
 
 	@Override
 	public void execute() {
-		boolean operandValue = getCurrentValue(booleanUnaryExpression.getOperand());
+		final boolean operandValue = this.getCurrentValue(this.booleanUnaryExpression.getOperand());
 
 		Boolean result = null;
-		switch (booleanUnaryExpression.getOperator()) {
+		switch (this.booleanUnaryExpression.getOperator()) {
 		case NOT:
 			result = !operandValue;
 			break;
 		}
-		assignValue(result);
+		this.assignValue(result);
 	}
 
 }

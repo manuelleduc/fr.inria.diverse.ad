@@ -10,27 +10,24 @@ import fr.inria.diverse.ad.algebra.operation.ExpressionOperation;
 
 public abstract class BooleanExpressionExpressionOperationImpl implements ExpressionOperation {
 
-	
-	private BooleanExpression booleanExpression;
-	private ExecutableADAlgebra alg;
+	private final BooleanExpression booleanExpression;
 
-	public BooleanExpressionExpressionOperationImpl(ExecutableADAlgebra alg,
-			BooleanExpression booleanExpression) {
-		this.alg = alg;
+	public BooleanExpressionExpressionOperationImpl(final ExecutableADAlgebra alg,
+			final BooleanExpression booleanExpression) {
 		this.booleanExpression = booleanExpression;
 	}
 
-	protected void assignValue(Boolean value) {
-		BooleanValue resultValue = ActivitydiagramFactory.eINSTANCE.createBooleanValue();
+	protected void assignValue(final Boolean value) {
+		final BooleanValue resultValue = ActivitydiagramFactory.eINSTANCE.createBooleanValue();
 		resultValue.setValue(value);
-		booleanExpression.getAssignee().setCurrentValue(resultValue);
+		this.booleanExpression.getAssignee().setCurrentValue(resultValue);
 	}
 
-	protected boolean getCurrentValue(BooleanVariable variable) {
-		Boolean currentValue = null; 
-		Value value = variable.getCurrentValue();
-		if(value instanceof BooleanValue) {
-			BooleanValue booleanValue = (BooleanValue) value;
+	protected boolean getCurrentValue(final BooleanVariable variable) {
+		Boolean currentValue = null;
+		final Value value = variable.getCurrentValue();
+		if (value instanceof BooleanValue) {
+			final BooleanValue booleanValue = (BooleanValue) value;
 			currentValue = booleanValue.isValue();
 		}
 		return currentValue;

@@ -9,27 +9,27 @@ import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
 import fr.inria.diverse.ad.algebra.operation.OfferOperation;
 
 public class OfferOfferOperationImpl implements OfferOperation {
-	private ExecutableADAlgebra alg;
-	private Offer offer;
+	private final ExecutableADAlgebra alg;
+	private final Offer offer;
 
-	public OfferOfferOperationImpl(ExecutableADAlgebra alg, Offer offer) {
+	public OfferOfferOperationImpl(final ExecutableADAlgebra alg, final Offer offer) {
 		this.alg = alg;
 		this.offer = offer;
 	}
 
 	@Override
 	public boolean hasTokens() {
-		removeWithdrawnTokens();
-		return offer.getOfferedTokens().size() > 0;
+		this.removeWithdrawnTokens();
+		return this.offer.getOfferedTokens().size() > 0;
 	}
 
 	private void removeWithdrawnTokens() {
-		List<Token> tokensToBeRemoved = new ArrayList<Token>();
-		for (Token token : offer.getOfferedTokens()) {
-			if (alg.$(token).isWithdrawn()) {
+		final List<Token> tokensToBeRemoved = new ArrayList<Token>();
+		for (final Token token : this.offer.getOfferedTokens()) {
+			if (this.alg.$(token).isWithdrawn()) {
 				tokensToBeRemoved.add(token);
 			}
 		}
-		offer.getOfferedTokens().removeAll(tokensToBeRemoved);
+		this.offer.getOfferedTokens().removeAll(tokensToBeRemoved);
 	}
 }

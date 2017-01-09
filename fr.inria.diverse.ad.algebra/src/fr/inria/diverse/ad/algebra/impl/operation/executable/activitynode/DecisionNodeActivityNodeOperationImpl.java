@@ -1,6 +1,5 @@
 package fr.inria.diverse.ad.algebra.impl.operation.executable.activitynode;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import activitydiagram.ActivityEdge;
@@ -38,7 +37,7 @@ public class DecisionNodeActivityNodeOperationImpl extends ControlNodeActivityNo
 
 		if (selectedEdge != null) {
 			this.addTokens(tokens);
-			alg.$(selectedEdge).sendOffer(tokens);
+			this.alg.$(selectedEdge).sendOffer(tokens);
 		}
 
 	}
@@ -46,9 +45,10 @@ public class DecisionNodeActivityNodeOperationImpl extends ControlNodeActivityNo
 	@Override
 	public boolean isReady() {
 		boolean ready = true;
-		for (ActivityEdge edge : this.decisionNode.getIncoming()) {
-			if (!this.alg.$(edge).hasOffer())
+		for (final ActivityEdge edge : this.decisionNode.getIncoming()) {
+			if (!this.alg.$(edge).hasOffer()) {
 				ready = false;
+			}
 		}
 		return ready;
 	}

@@ -1,26 +1,22 @@
 package fr.inria.diverse.ad.algebra.impl.operation.executable.activitynode;
 
-import java.util.List;
-
 import activitydiagram.Expression;
 import activitydiagram.OpaqueAction;
-import activitydiagram.Token;
 import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
-import fr.inria.diverse.ad.algebra.operation.ActivityNodeOperation;
 
 public class OpageActionActivityNodeOperationImpl extends ActionActivityNodeOperationImpl {
 
-	private OpaqueAction opaqueAction;
+	private final OpaqueAction opaqueAction;
 
-	public OpageActionActivityNodeOperationImpl(ExecutableADAlgebra alg, OpaqueAction opaqueAction) {
+	public OpageActionActivityNodeOperationImpl(final ExecutableADAlgebra alg, final OpaqueAction opaqueAction) {
 		super(alg, opaqueAction);
 		this.opaqueAction = opaqueAction;
 	}
 
 	@Override
 	void doAction() {
-		for (Expression e : opaqueAction.getExpressions()) {
-			alg.$(e).execute();
+		for (final Expression e : this.opaqueAction.getExpressions()) {
+			this.alg.$(e).execute();
 		}
 		
 	}

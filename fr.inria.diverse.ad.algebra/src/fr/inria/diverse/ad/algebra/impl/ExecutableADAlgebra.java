@@ -1,11 +1,7 @@
 package fr.inria.diverse.ad.algebra.impl;
 
-import java.util.List;
-
 import activitydiagram.Activity;
 import activitydiagram.ActivityFinalNode;
-import activitydiagram.ActivityNode;
-import activitydiagram.ActivitydiagramFactory;
 import activitydiagram.BooleanBinaryExpression;
 import activitydiagram.BooleanUnaryExpression;
 import activitydiagram.BooleanValue;
@@ -28,7 +24,6 @@ import activitydiagram.Offer;
 import activitydiagram.OpaqueAction;
 import activitydiagram.Trace;
 import activitydiagram.algebra.ActivitydiagramAlgebra;
-import activitydiagram.impl.TraceImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.executable.activity.ActivityActivityOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.executable.activityedge.ControlFlowActivityEdgeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.executable.activitynode.ActivityFinalNodeActivityNodeOperationImpl;
@@ -38,31 +33,22 @@ import fr.inria.diverse.ad.algebra.impl.operation.executable.activitynode.Initia
 import fr.inria.diverse.ad.algebra.impl.operation.executable.activitynode.JoinNodeActivityNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.executable.activitynode.MergeNodeActivityNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.executable.activitynode.OpageActionActivityNodeOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.executable.contextprocessor.InputValueContextProcessorOperationImplementation;
 import fr.inria.diverse.ad.algebra.impl.operation.executable.expressionoperation.BooleanBinaryExpressionExpressionOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.executable.expressionoperation.BooleanUnaryExpressionExpressionOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.executable.expressionoperation.IntegerCalculationExpressionExpressionOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.executable.expressionoperation.IntegerComparisonExpressionExpressionOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.executable.node.ControlTokenNodeOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.executable.node.ForkedTokenNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.impl.operation.executable.offer.OfferOfferOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.executable.value.BooleanValueValueOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.executable.value.IntegerValueValueOperationImplementation;
-import fr.inria.diverse.ad.algebra.impl.operation.executable.variable.BooleanVariableVariableOperationImpl;
-import fr.inria.diverse.ad.algebra.impl.operation.executable.variable.IntegerVariableVariableOperationImplementation;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.token.ControlTokenNodeOperationImpl;
+import fr.inria.diverse.ad.algebra.impl.operation.executable.token.ForkedTokenNodeOperationImpl;
 import fr.inria.diverse.ad.algebra.operation.ActivityEdgeOperation;
 import fr.inria.diverse.ad.algebra.operation.ActivityNodeOperation;
 import fr.inria.diverse.ad.algebra.operation.ActivityOperation;
-import fr.inria.diverse.ad.algebra.operation.ContextProcessorOperation;
 import fr.inria.diverse.ad.algebra.operation.ExpressionOperation;
-import fr.inria.diverse.ad.algebra.operation.NodeOperation;
+import fr.inria.diverse.ad.algebra.operation.TokenOperation;
 import fr.inria.diverse.ad.algebra.operation.OfferOperation;
-import fr.inria.diverse.ad.algebra.operation.TraceOperation;
-import fr.inria.diverse.ad.algebra.operation.ValueOperation;
-import fr.inria.diverse.ad.algebra.operation.VariableOperation;
 
 public interface ExecutableADAlgebra extends
-		ActivitydiagramAlgebra<ActivityOperation, ActivityNodeOperation, ActivityEdgeOperation, Void, VariableOperation, ValueOperation, ExpressionOperation, OfferOperation, NodeOperation, Void, ContextProcessorOperation, Void> {
+		ActivitydiagramAlgebra<ActivityNodeOperation, ActivityOperation, ActivityEdgeOperation, ExpressionOperation, Void, Void, TokenOperation, Void, Void, OfferOperation, Void> {
 
 	@Override
 	default ActivityOperation activity(final Activity activity) {
@@ -115,13 +101,13 @@ public interface ExecutableADAlgebra extends
 	}
 
 	@Override
-	default ValueOperation booleanValue(final BooleanValue booleanValue) {
-		return new BooleanValueValueOperationImpl(booleanValue);
+	default Void booleanValue(final BooleanValue booleanValue) {
+		throw new RuntimeException("Not implemented");
 	}
 
 	@Override
-	default VariableOperation booleanVariable(final BooleanVariable booleanVariable) {
-		return new BooleanVariableVariableOperationImpl(booleanVariable);
+	default Void booleanVariable(final BooleanVariable booleanVariable) {
+		throw new RuntimeException("Not implemented");
 	}
 
 	@Override
@@ -130,23 +116,23 @@ public interface ExecutableADAlgebra extends
 	}
 
 	@Override
-	default NodeOperation controlToken(final ControlToken controlToken) {
+	default TokenOperation controlToken(final ControlToken controlToken) {
 		return new ControlTokenNodeOperationImpl(this, controlToken);
 	}
 
 	@Override
-	default NodeOperation forkedToken(final ForkedToken forkedlToken) {
+	default TokenOperation forkedToken(final ForkedToken forkedlToken) {
 		return new ForkedTokenNodeOperationImpl(this, forkedlToken);
 	}
 
 	@Override
 	default Void input(final Input input) {
-		throw new RuntimeException("unused ?");
+		throw new RuntimeException("Not implemented");
 	}
 
 	@Override
-	default ContextProcessorOperation inputValue(final InputValue inputValue) {
-		return new InputValueContextProcessorOperationImplementation(this, inputValue);
+	default Void inputValue(final InputValue inputValue) {
+		throw new RuntimeException("Not implemented");
 	}
 
 	@Override
@@ -162,13 +148,13 @@ public interface ExecutableADAlgebra extends
 	}
 
 	@Override
-	default ValueOperation integerValue(final IntegerValue integerValue) {
-		return new IntegerValueValueOperationImplementation(integerValue);
+	default Void integerValue(final IntegerValue integerValue) {
+		throw new RuntimeException("Not implemented");
 	}
 
 	@Override
-	default VariableOperation integerVariable(final IntegerVariable integerVariable) {
-		return new IntegerVariableVariableOperationImplementation();
+	default Void integerVariable(final IntegerVariable integerVariable) {
+		throw new RuntimeException("Not implemented");
 	}
 
 	@Override
@@ -178,7 +164,7 @@ public interface ExecutableADAlgebra extends
 
 	@Override
 	default Void trace(final Trace trace) {
-		throw new RuntimeException("unused ?");
+		throw new RuntimeException("Not implemented");
 	}
 
 }

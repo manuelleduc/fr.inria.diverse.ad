@@ -9,11 +9,9 @@ import activitydiagram.Token;
 import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
 
 public class InitialNodeActivityNodeOperationImpl extends ControlNodeActivityNodeImpl {
-	private final InitialNode initialNode;
 
 	public InitialNodeActivityNodeOperationImpl(final ExecutableADAlgebra alg, final InitialNode initialNode) {
 		super(alg, initialNode);
-		this.initialNode = initialNode;
 	}
 
 	@Override

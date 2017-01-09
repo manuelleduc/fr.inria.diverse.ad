@@ -19,7 +19,6 @@ public class ForkNodeActivityNodeOperationImpl extends ControlNodeActivityNodeIm
 
 	@Override
 	public void fire(final List<Token> tokens) {
-		// TODO
 		final List<Token> forkedTokens = new ArrayList<Token>();
 		for (final Token token : tokens) {
 			final ForkedToken forkedToken = ActivitydiagramFactory.eINSTANCE.createForkedToken();

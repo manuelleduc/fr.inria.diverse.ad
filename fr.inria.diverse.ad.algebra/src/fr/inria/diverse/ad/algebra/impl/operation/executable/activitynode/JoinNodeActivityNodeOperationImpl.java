@@ -6,9 +6,9 @@ import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
 
 public class JoinNodeActivityNodeOperationImpl extends ControlNodeActivityNodeImpl {
 
-	private JoinNode joinNode;
+	private final JoinNode joinNode;
 
-	public JoinNodeActivityNodeOperationImpl(ExecutableADAlgebra alg, JoinNode joinNode) {
+	public JoinNodeActivityNodeOperationImpl(final ExecutableADAlgebra alg, final JoinNode joinNode) {
 		super(alg, joinNode);
 		this.joinNode = joinNode;
 	}
@@ -16,9 +16,10 @@ public class JoinNodeActivityNodeOperationImpl extends ControlNodeActivityNodeIm
 	@Override
 	public boolean isReady() {
 		boolean ready = true;
-		for (ActivityEdge edge : joinNode.getIncoming()) {
-			if (!this.alg.$(edge).hasOffer())
+		for (final ActivityEdge edge : this.joinNode.getIncoming()) {
+			if (!this.alg.$(edge).hasOffer()) {
 				ready = false;
+			}
 		}
 		return ready;
 	}

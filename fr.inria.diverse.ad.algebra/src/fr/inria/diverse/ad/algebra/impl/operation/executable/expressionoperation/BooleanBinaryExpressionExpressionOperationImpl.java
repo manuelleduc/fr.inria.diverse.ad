@@ -4,21 +4,21 @@ import activitydiagram.BooleanBinaryExpression;
 import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
 
 public class BooleanBinaryExpressionExpressionOperationImpl extends BooleanExpressionExpressionOperationImpl{
-	private BooleanBinaryExpression booleanBinaryExpression;
+	private final BooleanBinaryExpression booleanBinaryExpression;
 
-	public BooleanBinaryExpressionExpressionOperationImpl(ExecutableADAlgebra alg,
-			BooleanBinaryExpression booleanBinaryExpression) {
+	public BooleanBinaryExpressionExpressionOperationImpl(final ExecutableADAlgebra alg,
+			final BooleanBinaryExpression booleanBinaryExpression) {
 		super(alg, booleanBinaryExpression);
 		this.booleanBinaryExpression = booleanBinaryExpression;
 	}
 
 	@Override
 	public void execute() {
-		boolean operandValue1 = getCurrentValue(booleanBinaryExpression.getOperand1());
-		boolean operandValue2 = getCurrentValue(booleanBinaryExpression.getOperand2());
+		final boolean operandValue1 = this.getCurrentValue(this.booleanBinaryExpression.getOperand1());
+		final boolean operandValue2 = this.getCurrentValue(this.booleanBinaryExpression.getOperand2());
 
 		Boolean result = null;
-		switch (booleanBinaryExpression.getOperator()) {
+		switch (this.booleanBinaryExpression.getOperator()) {
 		case AND:
 			result = operandValue1 && operandValue2;
 			break;
@@ -26,7 +26,7 @@ public class BooleanBinaryExpressionExpressionOperationImpl extends BooleanExpre
 			result = operandValue1 || operandValue2;
 			break;
 		}		
-		assignValue(result);
+		this.assignValue(result);
 
 	}
 }

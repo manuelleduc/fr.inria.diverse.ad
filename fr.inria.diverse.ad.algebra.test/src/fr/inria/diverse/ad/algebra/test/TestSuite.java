@@ -11,7 +11,10 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -20,23 +23,32 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.modelexecution.operationalsemantics.ActivityDiagramInputStandaloneSetup;
 import org.modelexecution.operationalsemantics.ActivityDiagramStandaloneSetup;
 
 import activitydiagram.Activity;
+import activitydiagram.ActivityEdge;
 import activitydiagram.ActivityNode;
 import activitydiagram.BooleanValue;
 import activitydiagram.BooleanVariable;
+import activitydiagram.Expression;
 import activitydiagram.Input;
 import activitydiagram.InputValue;
 import activitydiagram.IntegerValue;
 import activitydiagram.IntegerVariable;
+import activitydiagram.Offer;
+import activitydiagram.Token;
 import activitydiagram.Trace;
 import activitydiagram.Value;
 import activitydiagram.Variable;
 import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
+import fr.inria.diverse.ad.algebra.operation.ActivityEdgeOperation;
+import fr.inria.diverse.ad.algebra.operation.ActivityNodeOperation;
+import fr.inria.diverse.ad.algebra.operation.ActivityOperation;
+import fr.inria.diverse.ad.algebra.operation.ExpressionOperation;
+import fr.inria.diverse.ad.algebra.operation.TokenOperation;
+import fr.inria.diverse.ad.algebra.operation.OfferOperation;
 
 public class TestSuite {
 
@@ -86,7 +98,6 @@ public class TestSuite {
 	}
 
 	@Test
-	// @Ignore
 	final public void test2() {
 		trace = executeActivity("model/test2.ad");
 		assertTrue(
@@ -96,7 +107,6 @@ public class TestSuite {
 	}
 
 	@Test
-	// @Ignore
 	final public void test3() {
 		trace = executeActivity("model/test3.ad");
 		assertTrue(checkTotalExecutionOrder(trace, "initialNode3", "decisionNode1", "action4", "mergeNode1",
@@ -127,7 +137,6 @@ public class TestSuite {
 	}
 
 	@Test
-	// @Ignore
 	final public void test6_false() {
 		trace = executeActivity("model/test6.ad", "model/test6_false.adinput");
 		assertTrue(checkTotalExecutionOrder(trace, "initialNode6", "register", "decisionInternal",
@@ -142,7 +151,6 @@ public class TestSuite {
 	}
 
 	@Test
-	// @Ignore
 	final public void test6_true() {
 		trace = executeActivity("model/test6.ad", "model/test6_true.adinput");
 		assertTrue(checkPartialExecutionOrder(trace, "initialNode6", "register", "decisionInternal",
@@ -180,7 +188,6 @@ public class TestSuite {
 	}
 
 	@Test
-	// @Ignore
 	public void test_performance_variant3_2() {
 		trace = executeActivity("model/testperformance_variant3_2.ad", "model/testperformance_variant3_2.adinput");
 		assertEquals(141, getIntegerVariableValue(trace, "loop"));
