@@ -33,7 +33,7 @@ import activitydiagram.Token;
 import activitydiagram.Trace;
 import activitydiagram.Value;
 import activitydiagram.Variable;
-import fr.inria.diverse.ad.visitor.ActivityVisitor;
+import fr.inria.diverse.ad.visitor.visitor.ActivityVisitor;
 
 public class Benchmark {
 
