@@ -7,7 +7,7 @@ import fr.inria.diverse.ad.visitor.impl.operation.executable.token.ControlTokenN
 import fr.inria.diverse.ad.visitor.impl.operation.executable.token.ForkedTokenNodeOperationImpl;
 import fr.inria.diverse.ad.visitor.operation.TokenOperation;
 
-public class TokenVisitor extends ActivitydiagramSwitch<TokenOperation>{
+public class TokenVisitor extends ActivitydiagramSwitch<TokenOperation> {
 
 	@Override
 	public TokenOperation caseControlToken(ControlToken object) {
@@ -19,6 +19,4 @@ public class TokenVisitor extends ActivitydiagramSwitch<TokenOperation>{
 		return new ForkedTokenNodeOperationImpl(object);
 	}
 
-	
-	
 }

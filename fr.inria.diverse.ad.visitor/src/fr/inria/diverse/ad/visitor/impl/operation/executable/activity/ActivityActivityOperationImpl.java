@@ -16,15 +16,15 @@ import fr.inria.diverse.ad.visitor.operation.ActivityOperation;
 import fr.inria.diverse.ad.visitor.visitor.ActivityNodeVisitor;
 
 public class ActivityActivityOperationImpl implements ActivityOperation {
-	
+
 	private final ActivityNodeVisitor activityNodeVisitor = new ActivityNodeVisitor();
-	
+
 	private final Activity activity;
 
 	public ActivityActivityOperationImpl(Activity activity) {
 		this.activity = activity;
 	}
-	
+
 	private void initialize(final List<InputValue> inputValues) {
 		for (final Variable v : activity.getLocals()) {
 			v.setCurrentValue(v.getInitialValue());

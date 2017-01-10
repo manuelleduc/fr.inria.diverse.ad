@@ -8,5 +8,4 @@ public abstract class ExecutableNodeActivityNodeImpl extends ActivityNodeActivit
 		super(joinNode);
 	}
 
-
 }

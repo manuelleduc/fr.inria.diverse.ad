@@ -4,7 +4,7 @@ import activitydiagram.ControlFlow;
 
 public class ControlFlowActivityEdgeOperationImpl extends ActivityEdgeActivityEdgeOperationImpl {
 
-	public ControlFlowActivityEdgeOperationImpl( final ControlFlow controlFlow) {
+	public ControlFlowActivityEdgeOperationImpl(final ControlFlow controlFlow) {
 		super(controlFlow);
 	}
 

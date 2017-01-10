@@ -9,7 +9,7 @@ public class ActivityEdgeVisitor extends ActivitydiagramSwitch<ActivityEdgeOpera
 
 	@Override
 	public ActivityEdgeOperation caseControlFlow(ControlFlow object) {
-		return new ControlFlowActivityEdgeOperationImpl(object); 
+		return new ControlFlowActivityEdgeOperationImpl(object);
 	}
 
 }

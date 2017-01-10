@@ -6,7 +6,7 @@ import fr.inria.diverse.ad.visitor.impl.operation.executable.activity.ActivityAc
 import fr.inria.diverse.ad.visitor.operation.ActivityOperation;
 
 public class ActivityVisitor extends ActivitydiagramSwitch<ActivityOperation> {
-	
+
 	@Override
 	public ActivityOperation caseActivity(final Activity activity) {
 		return new ActivityActivityOperationImpl(activity);

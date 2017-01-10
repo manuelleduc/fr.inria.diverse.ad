@@ -9,7 +9,7 @@ import fr.inria.diverse.ad.visitor.visitor.ActivityNodeVisitor;
 public abstract class TokenNodeOperationImpl implements TokenOperation {
 
 	private final Token token;
-	
+
 	private final ActivityNodeVisitor activityNodeVisitor = new ActivityNodeVisitor();
 
 	public TokenNodeOperationImpl(final Token token) {
