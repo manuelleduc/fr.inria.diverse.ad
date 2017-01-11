@@ -6,6 +6,7 @@ import activitydiagram.ActivityEdge;
 import activitydiagram.ActivityNode;
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.Offer;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import java.util.Collection;
 
@@ -338,5 +339,10 @@ public abstract class ActivityEdgeImpl extends NamedElementImpl implements Activ
 		}
 		return super.eIsSet(featureID);
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public abstract <T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } //ActivityEdgeImpl

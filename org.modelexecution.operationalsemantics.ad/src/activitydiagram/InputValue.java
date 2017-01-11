@@ -4,6 +4,8 @@ package activitydiagram;
 
 import org.eclipse.emf.ecore.EObject;
 
+import activitydiagram.visitor.ActivityDiagramVisitor;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Input Value</b></em>'.
@@ -73,5 +75,12 @@ public interface InputValue extends EObject {
 	 * @generated
 	 */
 	void setVariable(Variable value);
+	
+	/**
+	 * @generated NOT
+	 * @param visitor
+	 * @return
+	 */
+	<T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } // InputValue

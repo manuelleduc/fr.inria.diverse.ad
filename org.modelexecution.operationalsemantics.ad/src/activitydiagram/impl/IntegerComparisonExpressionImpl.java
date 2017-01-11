@@ -6,6 +6,7 @@ import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.BooleanVariable;
 import activitydiagram.IntegerComparisonExpression;
 import activitydiagram.IntegerComparisonOperator;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -220,6 +221,13 @@ public class IntegerComparisonExpressionImpl extends IntegerExpressionImpl imple
 		result.append(operator);
 		result.append(')');
 		return result.toString();
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitIntegerComparisonExpression(this);
 	}
 
 } //IntegerComparisonExpressionImpl

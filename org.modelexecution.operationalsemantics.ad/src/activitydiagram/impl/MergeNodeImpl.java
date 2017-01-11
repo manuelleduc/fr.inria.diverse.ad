@@ -4,6 +4,7 @@ package activitydiagram.impl;
 
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.MergeNode;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -32,6 +33,13 @@ public class MergeNodeImpl extends ControlNodeImpl implements MergeNode {
 	@Override
 	protected EClass eStaticClass() {
 		return ActivitydiagramPackage.Literals.MERGE_NODE;
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitMergeNode(this);
 	}
 
 } //MergeNodeImpl

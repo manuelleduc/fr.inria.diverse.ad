@@ -4,6 +4,7 @@ package activitydiagram.impl;
 
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.BooleanValue;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -157,6 +158,13 @@ public class BooleanValueImpl extends ValueImpl implements BooleanValue {
 		result.append(value);
 		result.append(')');
 		return result.toString();
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitBooleanValue(this);
 	}
 
 } //BooleanValueImpl

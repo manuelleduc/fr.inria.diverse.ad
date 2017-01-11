@@ -4,6 +4,7 @@ package activitydiagram.impl;
 
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.IntegerVariable;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -32,6 +33,13 @@ public class IntegerVariableImpl extends VariableImpl implements IntegerVariable
 	@Override
 	protected EClass eStaticClass() {
 		return ActivitydiagramPackage.Literals.INTEGER_VARIABLE;
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitIntegerVariable(this);
 	}
 
 } //IntegerVariableImpl

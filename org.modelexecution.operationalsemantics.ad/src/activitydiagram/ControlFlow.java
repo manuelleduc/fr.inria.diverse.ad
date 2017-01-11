@@ -2,6 +2,7 @@
  */
 package activitydiagram;
 
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -45,5 +46,12 @@ public interface ControlFlow extends ActivityEdge {
 	 * @generated
 	 */
 	void setGuard(BooleanVariable value);
+	
+	/**
+	 * @generated NOT
+	 * @param visitor
+	 * @return
+	 */
+	<T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } // ControlFlow

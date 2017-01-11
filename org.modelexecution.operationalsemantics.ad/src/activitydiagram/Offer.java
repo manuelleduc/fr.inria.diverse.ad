@@ -6,6 +6,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
+import activitydiagram.visitor.ActivityDiagramVisitor;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Offer</b></em>'.
@@ -38,5 +40,12 @@ public interface Offer extends EObject {
 	 * @generated
 	 */
 	EList<Token> getOfferedTokens();
+	
+	/**
+	 * @generated NOT
+	 * @param visitor
+	 * @return
+	 */
+	<T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } // Offer

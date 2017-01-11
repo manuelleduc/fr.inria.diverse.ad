@@ -6,6 +6,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
+import activitydiagram.visitor.ActivityDiagramVisitor;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Trace</b></em>'.
@@ -38,5 +40,12 @@ public interface Trace extends EObject {
 	 * @generated
 	 */
 	EList<ActivityNode> getExecutedNodes();
+	
+	/**
+	 * @generated NOT
+	 * @param visitor
+	 * @return
+	 */
+	<T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } // Trace

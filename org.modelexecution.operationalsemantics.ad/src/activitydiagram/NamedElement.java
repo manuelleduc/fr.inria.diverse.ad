@@ -4,6 +4,8 @@ package activitydiagram;
 
 import org.eclipse.emf.ecore.EObject;
 
+import activitydiagram.visitor.ActivityDiagramVisitor;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Named Element</b></em>'.
@@ -46,5 +48,12 @@ public interface NamedElement extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+	
+	/**
+	 * @generated NOT
+	 * @param visitor
+	 * @return
+	 */
+	<T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } // NamedElement

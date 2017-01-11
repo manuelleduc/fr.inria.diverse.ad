@@ -2,6 +2,7 @@
  */
 package activitydiagram;
 
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,4 +15,10 @@ package activitydiagram;
  * @generated
  */
 public interface ActivityFinalNode extends FinalNode {
+	/**
+	 * @generated NOT
+	 * @param visitor
+	 * @return
+	 */
+	<T> T accept(ActivityDiagramVisitor<T> visitor);
 } // ActivityFinalNode

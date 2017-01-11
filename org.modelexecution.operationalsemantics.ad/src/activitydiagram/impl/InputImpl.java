@@ -5,6 +5,7 @@ package activitydiagram.impl;
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.Input;
 import activitydiagram.InputValue;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import java.util.Collection;
 
@@ -147,6 +148,13 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input {
 				return inputValues != null && !inputValues.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitInput(this);
 	}
 
 } //InputImpl

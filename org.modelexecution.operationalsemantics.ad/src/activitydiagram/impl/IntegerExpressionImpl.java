@@ -5,6 +5,7 @@ package activitydiagram.impl;
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.IntegerExpression;
 import activitydiagram.IntegerVariable;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -212,5 +213,10 @@ public abstract class IntegerExpressionImpl extends ExpressionImpl implements In
 		}
 		return super.eIsSet(featureID);
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public abstract <T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } //IntegerExpressionImpl

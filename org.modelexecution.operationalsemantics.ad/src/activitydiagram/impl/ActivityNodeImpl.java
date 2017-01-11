@@ -7,6 +7,7 @@ import activitydiagram.ActivityEdge;
 import activitydiagram.ActivityNode;
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.Token;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import java.util.Collection;
 
@@ -384,5 +385,10 @@ public abstract class ActivityNodeImpl extends NamedElementImpl implements Activ
 		result.append(')');
 		return result.toString();
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public abstract <T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } //ActivityNodeImpl

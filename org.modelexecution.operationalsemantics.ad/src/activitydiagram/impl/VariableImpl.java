@@ -5,6 +5,7 @@ package activitydiagram.impl;
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.Value;
 import activitydiagram.Variable;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -306,5 +307,10 @@ public abstract class VariableImpl extends MinimalEObjectImpl.Container implemen
 		result.append(')');
 		return result.toString();
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public abstract <T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } //VariableImpl

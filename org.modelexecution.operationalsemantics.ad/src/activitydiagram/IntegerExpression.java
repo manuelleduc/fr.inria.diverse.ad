@@ -2,6 +2,7 @@
  */
 package activitydiagram;
 
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,5 +73,12 @@ public interface IntegerExpression extends Expression {
 	 * @generated
 	 */
 	void setOperand1(IntegerVariable value);
+	
+	/**
+	 * @generated NOT
+	 * @param visitor
+	 * @return
+	 */
+	<T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } // IntegerExpression

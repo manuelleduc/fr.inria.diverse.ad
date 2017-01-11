@@ -4,6 +4,8 @@ package activitydiagram;
 
 import org.eclipse.emf.ecore.EObject;
 
+import activitydiagram.visitor.ActivityDiagramVisitor;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Token</b></em>'.
@@ -48,5 +50,12 @@ public interface Token extends EObject {
 	 * @generated
 	 */
 	void setHolder(ActivityNode value);
+	
+	/**
+	 * @generated NOT
+	 * @param visitor
+	 * @return
+	 */
+	<T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } // Token

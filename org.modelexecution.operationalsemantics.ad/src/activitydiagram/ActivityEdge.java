@@ -4,6 +4,8 @@ package activitydiagram;
 
 import org.eclipse.emf.common.util.EList;
 
+import activitydiagram.visitor.ActivityDiagramVisitor;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Activity Edge</b></em>'.
@@ -94,5 +96,12 @@ public interface ActivityEdge extends NamedElement {
 	 * @generated
 	 */
 	EList<Offer> getOffers();
+	
+	/**
+	 * @generated NOT
+	 * @param visitor
+	 * @return
+	 */
+	<T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } // ActivityEdge

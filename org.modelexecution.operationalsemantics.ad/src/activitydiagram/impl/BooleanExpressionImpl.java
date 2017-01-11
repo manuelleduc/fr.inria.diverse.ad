@@ -5,6 +5,7 @@ package activitydiagram.impl;
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.BooleanExpression;
 import activitydiagram.BooleanVariable;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -152,5 +153,11 @@ public abstract class BooleanExpressionImpl extends ExpressionImpl implements Bo
 		}
 		return super.eIsSet(featureID);
 	}
+	
+	
+	/**
+	 * @generated NOT
+	 */
+	public abstract <T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } //BooleanExpressionImpl

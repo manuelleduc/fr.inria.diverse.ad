@@ -6,6 +6,7 @@ import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.IntegerCalculationExpression;
 import activitydiagram.IntegerCalculationOperator;
 import activitydiagram.IntegerVariable;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -220,6 +221,13 @@ public class IntegerCalculationExpressionImpl extends IntegerExpressionImpl impl
 		result.append(operator);
 		result.append(')');
 		return result.toString();
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitIntegerCalculationExpression(this);
 	}
 
 } //IntegerCalculationExpressionImpl

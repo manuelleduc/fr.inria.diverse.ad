@@ -6,6 +6,7 @@ import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.InputValue;
 import activitydiagram.Value;
 import activitydiagram.Variable;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -232,6 +233,13 @@ public class InputValueImpl extends MinimalEObjectImpl.Container implements Inpu
 				return variable != null;
 		}
 		return super.eIsSet(featureID);
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitInputValue(this);
 	}
 
 } //InputValueImpl

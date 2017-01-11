@@ -4,6 +4,8 @@ package activitydiagram;
 
 import org.eclipse.emf.common.util.EList;
 
+import activitydiagram.visitor.ActivityDiagramVisitor;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Activity</b></em>'.
@@ -116,5 +118,12 @@ public interface Activity extends NamedElement {
 	 * @generated
 	 */
 	void setTrace(Trace value);
+	
+	/**
+	 * @generated NOT
+	 * @param visitor
+	 * @return
+	 */
+	<T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } // Activity

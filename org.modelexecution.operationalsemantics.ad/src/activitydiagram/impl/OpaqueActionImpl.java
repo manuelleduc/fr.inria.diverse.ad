@@ -5,6 +5,7 @@ package activitydiagram.impl;
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.Expression;
 import activitydiagram.OpaqueAction;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import java.util.Collection;
 
@@ -145,6 +146,13 @@ public class OpaqueActionImpl extends ActionImpl implements OpaqueAction {
 				return expressions != null && !expressions.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitOpaqueAction(this);
 	}
 
 } //OpaqueActionImpl

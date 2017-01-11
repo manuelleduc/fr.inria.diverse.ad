@@ -4,6 +4,8 @@ package activitydiagram;
 
 import org.eclipse.emf.common.util.EList;
 
+import activitydiagram.visitor.ActivityDiagramVisitor;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Opaque Action</b></em>'.
@@ -36,5 +38,12 @@ public interface OpaqueAction extends Action {
 	 * @generated
 	 */
 	EList<Expression> getExpressions();
+	
+	/**
+	 * @generated NOT
+	 * @param visitor
+	 * @return
+	 */
+	<T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } // OpaqueAction

@@ -4,6 +4,7 @@ package activitydiagram.impl;
 
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.FinalNode;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -33,5 +34,10 @@ public abstract class FinalNodeImpl extends ControlNodeImpl implements FinalNode
 	protected EClass eStaticClass() {
 		return ActivitydiagramPackage.Literals.FINAL_NODE;
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public abstract <T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } //FinalNodeImpl

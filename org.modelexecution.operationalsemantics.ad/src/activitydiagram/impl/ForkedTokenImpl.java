@@ -5,6 +5,7 @@ package activitydiagram.impl;
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.ForkedToken;
 import activitydiagram.Token;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -219,6 +220,13 @@ public class ForkedTokenImpl extends TokenImpl implements ForkedToken {
 		result.append(remainingOffersCount);
 		result.append(')');
 		return result.toString();
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitForkedToken(this);
 	}
 
 } //ForkedTokenImpl

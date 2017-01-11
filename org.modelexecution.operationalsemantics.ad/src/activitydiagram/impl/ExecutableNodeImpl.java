@@ -4,6 +4,7 @@ package activitydiagram.impl;
 
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.ExecutableNode;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -33,5 +34,10 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 	protected EClass eStaticClass() {
 		return ActivitydiagramPackage.Literals.EXECUTABLE_NODE;
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public abstract <T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } //ExecutableNodeImpl

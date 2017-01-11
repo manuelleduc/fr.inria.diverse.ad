@@ -8,6 +8,7 @@ import activitydiagram.ActivityNode;
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.Trace;
 import activitydiagram.Variable;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import java.util.Collection;
 
@@ -341,6 +342,13 @@ public class ActivityImpl extends NamedElementImpl implements Activity {
 				return trace != null;
 		}
 		return super.eIsSet(featureID);
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitActivity(this);
 	}
 
 } //ActivityImpl

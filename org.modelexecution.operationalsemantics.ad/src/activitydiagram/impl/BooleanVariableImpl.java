@@ -4,6 +4,7 @@ package activitydiagram.impl;
 
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.BooleanVariable;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -34,4 +35,11 @@ public class BooleanVariableImpl extends VariableImpl implements BooleanVariable
 		return ActivitydiagramPackage.Literals.BOOLEAN_VARIABLE;
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitBooleanVariable(this);
+	}
+	
 } //BooleanVariableImpl

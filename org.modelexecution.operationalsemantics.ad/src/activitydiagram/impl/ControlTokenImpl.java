@@ -4,6 +4,7 @@ package activitydiagram.impl;
 
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.ControlToken;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -32,6 +33,13 @@ public class ControlTokenImpl extends TokenImpl implements ControlToken {
 	@Override
 	protected EClass eStaticClass() {
 		return ActivitydiagramPackage.Literals.CONTROL_TOKEN;
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitControlToken(this);
 	}
 
 } //ControlTokenImpl

@@ -4,6 +4,7 @@ package activitydiagram.impl;
 
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.InitialNode;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -32,6 +33,13 @@ public class InitialNodeImpl extends ControlNodeImpl implements InitialNode {
 	@Override
 	protected EClass eStaticClass() {
 		return ActivitydiagramPackage.Literals.INITIAL_NODE;
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitInitialNode(this);
 	}
 
 } //InitialNodeImpl

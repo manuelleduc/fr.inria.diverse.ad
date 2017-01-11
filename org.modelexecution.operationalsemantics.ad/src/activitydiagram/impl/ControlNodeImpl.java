@@ -4,6 +4,7 @@ package activitydiagram.impl;
 
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.ControlNode;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -33,5 +34,10 @@ public abstract class ControlNodeImpl extends ActivityNodeImpl implements Contro
 	protected EClass eStaticClass() {
 		return ActivitydiagramPackage.Literals.CONTROL_NODE;
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public abstract <T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } //ControlNodeImpl

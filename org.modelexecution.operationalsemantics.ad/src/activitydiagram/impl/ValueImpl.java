@@ -4,6 +4,7 @@ package activitydiagram.impl;
 
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.Value;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -35,5 +36,10 @@ public abstract class ValueImpl extends MinimalEObjectImpl.Container implements 
 	protected EClass eStaticClass() {
 		return ActivitydiagramPackage.Literals.VALUE;
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public abstract <T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } //ValueImpl

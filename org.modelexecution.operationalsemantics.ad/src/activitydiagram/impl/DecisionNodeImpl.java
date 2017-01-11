@@ -4,6 +4,7 @@ package activitydiagram.impl;
 
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.DecisionNode;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -32,6 +33,13 @@ public class DecisionNodeImpl extends ControlNodeImpl implements DecisionNode {
 	@Override
 	protected EClass eStaticClass() {
 		return ActivitydiagramPackage.Literals.DECISION_NODE;
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitDecisionNode(this);
 	}
 
 } //DecisionNodeImpl

@@ -2,6 +2,7 @@
  */
 package activitydiagram;
 
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,5 +73,12 @@ public interface ForkedToken extends Token {
 	 * @generated
 	 */
 	void setRemainingOffersCount(int value);
+	
+	/**
+	 * @generated NOT
+	 * @param visitor
+	 * @return
+	 */
+	<T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } // ForkedToken

@@ -4,6 +4,8 @@ package activitydiagram;
 
 import org.eclipse.emf.common.util.EList;
 
+import activitydiagram.visitor.ActivityDiagramVisitor;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Activity Node</b></em>'.
@@ -132,5 +134,13 @@ public interface ActivityNode extends NamedElement {
 	 * @generated
 	 */
 	EList<Token> getHeldTokens();
+	
+	
+	/**
+	 * @generated NOT
+	 * @param visitor
+	 * @return
+	 */
+	<T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } // ActivityNode

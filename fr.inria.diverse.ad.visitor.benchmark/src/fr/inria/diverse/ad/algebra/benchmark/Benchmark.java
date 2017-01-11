@@ -5,11 +5,8 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.print.attribute.HashAttributeSet;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -22,17 +19,9 @@ import org.modelexecution.operationalsemantics.ActivityDiagramStandaloneSetup;
 import com.google.common.io.Files;
 
 import activitydiagram.Activity;
-import activitydiagram.ActivityEdge;
-import activitydiagram.ActivityNode;
 import activitydiagram.ActivitydiagramPackage;
-import activitydiagram.Expression;
 import activitydiagram.Input;
 import activitydiagram.InputValue;
-import activitydiagram.Offer;
-import activitydiagram.Token;
-import activitydiagram.Trace;
-import activitydiagram.Value;
-import activitydiagram.Variable;
 import fr.inria.diverse.ad.visitor.visitor.ActivityVisitor;
 
 public class Benchmark {

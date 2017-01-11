@@ -211,4 +211,6 @@ public enum BooleanBinaryOperator implements Enumerator {
 		return literal;
 	}
 	
+	
+	
 } //BooleanBinaryOperator

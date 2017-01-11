@@ -5,6 +5,7 @@ package activitydiagram.impl;
 import activitydiagram.ActivityNode;
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.Trace;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import java.util.Collection;
 
@@ -130,6 +131,13 @@ public class TraceImpl extends MinimalEObjectImpl.Container implements Trace {
 				return executedNodes != null && !executedNodes.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitTrace(this);
 	}
 
 } //TraceImpl

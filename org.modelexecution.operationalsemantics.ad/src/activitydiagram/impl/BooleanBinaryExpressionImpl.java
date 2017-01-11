@@ -6,6 +6,7 @@ import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.BooleanBinaryExpression;
 import activitydiagram.BooleanBinaryOperator;
 import activitydiagram.BooleanVariable;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -280,6 +281,13 @@ public class BooleanBinaryExpressionImpl extends BooleanExpressionImpl implement
 		result.append(operator);
 		result.append(')');
 		return result.toString();
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitBooleanBinaryExpression(this);
 	}
 
 } //BooleanBinaryExpressionImpl

@@ -2,6 +2,7 @@
  */
 package activitydiagram;
 
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -102,5 +103,12 @@ public interface BooleanBinaryExpression extends BooleanExpression {
 	 * @generated
 	 */
 	void setOperator(BooleanBinaryOperator value);
+	
+	/**
+	 * @generated NOT
+	 * @param visitor
+	 * @return
+	 */
+	<T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } // BooleanBinaryExpression

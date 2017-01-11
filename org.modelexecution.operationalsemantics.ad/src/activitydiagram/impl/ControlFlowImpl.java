@@ -5,6 +5,7 @@ package activitydiagram.impl;
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.BooleanVariable;
 import activitydiagram.ControlFlow;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -151,6 +152,13 @@ public class ControlFlowImpl extends ActivityEdgeImpl implements ControlFlow {
 				return guard != null;
 		}
 		return super.eIsSet(featureID);
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitControlFlow(this);
 	}
 
 } //ControlFlowImpl

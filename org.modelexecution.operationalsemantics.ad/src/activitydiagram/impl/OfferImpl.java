@@ -5,6 +5,7 @@ package activitydiagram.impl;
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.Offer;
 import activitydiagram.Token;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import java.util.Collection;
 
@@ -129,6 +130,13 @@ public class OfferImpl extends MinimalEObjectImpl.Container implements Offer {
 				return offeredTokens != null && !offeredTokens.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitOffer(this);
 	}
 
 } //OfferImpl

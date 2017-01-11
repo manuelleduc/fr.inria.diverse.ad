@@ -4,6 +4,7 @@ package activitydiagram.impl;
 
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.ForkNode;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -32,6 +33,13 @@ public class ForkNodeImpl extends ControlNodeImpl implements ForkNode {
 	@Override
 	protected EClass eStaticClass() {
 		return ActivitydiagramPackage.Literals.FORK_NODE;
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public <T> T accept(ActivityDiagramVisitor<T> visitor) {
+		return visitor.visitForkNode(this);
 	}
 
 } //ForkNodeImpl

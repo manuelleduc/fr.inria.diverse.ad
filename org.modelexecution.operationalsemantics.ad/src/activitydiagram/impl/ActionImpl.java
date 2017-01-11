@@ -3,6 +3,7 @@
 package activitydiagram.impl;
 
 import activitydiagram.Action;
+import activitydiagram.visitor.ActivityDiagramVisitor;
 import activitydiagram.ActivitydiagramPackage;
 
 import org.eclipse.emf.ecore.EClass;
@@ -33,5 +34,10 @@ public abstract class ActionImpl extends ExecutableNodeImpl implements Action {
 	protected EClass eStaticClass() {
 		return ActivitydiagramPackage.Literals.ACTION;
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public abstract <T> T accept(ActivityDiagramVisitor<T> visitor);
 
 } //ActionImpl
