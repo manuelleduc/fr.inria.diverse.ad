@@ -11,10 +11,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.IdentityHashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -28,27 +25,17 @@ import org.modelexecution.operationalsemantics.ActivityDiagramInputStandaloneSet
 import org.modelexecution.operationalsemantics.ActivityDiagramStandaloneSetup;
 
 import activitydiagram.Activity;
-import activitydiagram.ActivityEdge;
 import activitydiagram.ActivityNode;
 import activitydiagram.BooleanValue;
 import activitydiagram.BooleanVariable;
-import activitydiagram.Expression;
 import activitydiagram.Input;
 import activitydiagram.InputValue;
 import activitydiagram.IntegerValue;
 import activitydiagram.IntegerVariable;
-import activitydiagram.Offer;
-import activitydiagram.Token;
 import activitydiagram.Trace;
 import activitydiagram.Value;
 import activitydiagram.Variable;
 import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
-import fr.inria.diverse.ad.algebra.operation.ActivityEdgeOperation;
-import fr.inria.diverse.ad.algebra.operation.ActivityNodeOperation;
-import fr.inria.diverse.ad.algebra.operation.ActivityOperation;
-import fr.inria.diverse.ad.algebra.operation.ExpressionOperation;
-import fr.inria.diverse.ad.algebra.operation.TokenOperation;
-import fr.inria.diverse.ad.algebra.operation.OfferOperation;
 
 public class TestSuite {
 

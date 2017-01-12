@@ -12,13 +12,13 @@ public class MergeNodeActivityNodeOperationImpl extends ControlNodeActivityNodeI
 		super(alg, mergeNode);
 		this.mergeNode = mergeNode;
 	}
-	
+
 	@Override
 	public boolean hasOffers() {
-		for(final ActivityEdge edge : this.mergeNode. getIncoming()) {
-			if(this.alg.$(edge).hasOffer()) {
+		for (final ActivityEdge edge : this.mergeNode.getIncoming()) {
+			if (this.alg.$(edge).hasOffer()) {
 				return true;
-			}	
+			}
 		}
 		return false;
 	}

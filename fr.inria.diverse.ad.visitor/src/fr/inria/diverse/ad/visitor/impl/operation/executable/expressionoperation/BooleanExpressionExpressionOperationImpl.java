@@ -18,7 +18,8 @@ public abstract class BooleanExpressionExpressionOperationImpl implements Expres
 	protected void assignValue(final Boolean value) {
 		final BooleanValue resultValue = ActivitydiagramFactory.eINSTANCE.createBooleanValue();
 		resultValue.setValue(value);
-		this.booleanExpression.getAssignee().setCurrentValue(resultValue);
+		BooleanVariable assignee = this.booleanExpression.getAssignee();
+		assignee.setCurrentValue(resultValue);
 	}
 
 	protected boolean getCurrentValue(final BooleanVariable variable) {

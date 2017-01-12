@@ -1,11 +1,10 @@
-package fr.inria.diverse.ad.algebra.benchmark;
+package fr.inria.diverse.ad.visitor2.benchmark;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,34 +19,30 @@ import org.modelexecution.operationalsemantics.ActivityDiagramStandaloneSetup;
 import com.google.common.io.Files;
 
 import activitydiagram.Activity;
-import activitydiagram.ActivityEdge;
-import activitydiagram.ActivityNode;
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.Input;
 import activitydiagram.InputValue;
-import fr.inria.diverse.ad.algebra.impl.ExecutableADAlgebra;
-import fr.inria.diverse.ad.algebra.operation.ActivityEdgeOperation;
-import fr.inria.diverse.ad.algebra.operation.ActivityNodeOperation;
+import fr.inria.diverse.ad.visitor2.Activitydiagram;
 
 public class Benchmark {
 
 	public static void main(String[] args) throws IOException {
 		new Benchmark().bench();
 	}
-	
-	
 
-	
 	protected XtextResourceSet resourceSet;
+
 	public Benchmark() {
 
 	}
 
 	private void bbb(String string, String string2, int limit, Map<Integer, Long> map) throws IOException {
-		long res = executeActivity("model/" + string + ".xmi", string2 == null ? null : "model/" + string2 + ".xmi", limit, map);
-//		Files.write(file.toPath(), ("Bench " + string + ".xmi = " + res + "\n").getBytes());
+		long res = executeActivity("model/" + string + ".xmi", string2 == null ? null : "model/" + string2 + ".xmi",
+				limit, map);
+		// Files.write(file.toPath(), ("Bench " + string + ".xmi = " + res +
+		// "\n").getBytes());
 		System.out.println("Bench " + string + ".xmi = " + res);
-//		append(, file, Charset.defaultCharset());
+		// append(, file, Charset.defaultCharset());
 	}
 
 	public void bench() throws IOException {
@@ -56,7 +51,7 @@ public class Benchmark {
 			file.delete();
 		}
 		int limit = 500;
-		
+
 		// first key = exp, second key = iteration, value = time;
 		final Map<Integer, Map<Integer, Long>> times = new HashMap<>();
 		times.put(1, new HashMap<>());
@@ -67,23 +62,21 @@ public class Benchmark {
 		bbb("testperformance_variant2", null, limit, times.get(2));
 		bbb("testperformance_variant3_1", null, limit, times.get(3));
 		bbb("testperformance_variant3_2", "testperformance_variant3_2_input", limit, times.get(4));
-		
-		for(int i=0; i<limit; i++) {
+
+		for (int i = 0; i < limit; i++) {
 			Long val1 = times.get(1).get(i);
 			Long val2 = times.get(2).get(i);
 			Long val3 = times.get(3).get(i);
 			Long val4 = times.get(4).get(i);
-			
-			Files.append("me;"+i+";"+val1+";"+val2+";"+val3+";"+val4+"\n", file, Charset.defaultCharset());
+
+			Files.append("me;" + i + ";" + val1 + ";" + val2 + ";" + val3 + ";" + val4 + "\n", file,
+					Charset.defaultCharset());
 		}
 
-		
 		// model/testperformance_variant2
 		// model/testperformance_variant3_1
 		// model/testperformance_variant3_2
 	}
-
-	
 
 	final protected File createFile(final String path) {
 		return new File(path);
@@ -98,33 +91,10 @@ public class Benchmark {
 		final Activity activity = getActivity(modelPath);
 		final List<InputValue> inputValues = getInputValues(inputPath);
 
-		final ExecutableADAlgebra executableADAlgebra = new ExecutableADAlgebra() {
+		final Activitydiagram activitydiagram = new Activitydiagram();
 
-			private final Map<ActivityNode, ActivityNodeOperation> activityNodeMemo = new IdentityHashMap<>();
-			private Map<ActivityEdge, ActivityEdgeOperation> activityEdgeMemo = new IdentityHashMap<>();
-
-			@Override
-			public Map<ActivityNode, ActivityNodeOperation> getActivityNodeMemo() {
-				return this.activityNodeMemo;
-			}
-
-			@Override
-			public Map<ActivityEdge, ActivityEdgeOperation> getActivityEdgeMemo() {
-				return this.activityEdgeMemo;
-			}
-		};
-
-		final long start = System.currentTimeMillis();
-		executableADAlgebra.$(activity).main(inputValues);
-		final long stop = System.currentTimeMillis();
-
-		return stop - start;
+		return activitydiagram.start(activity, inputValues);
 	}
-//
-//	private long executeActivity(String modelPath, int limit, Map<Integer, Integer> map) {
-//		return executeActivity(modelPath, null, limit, map);
-//
-//	}
 
 	private long executeActivity(String modelPath, String inputPath, int limit, Map<Integer, Long> map) {
 		long ttl = 0;
